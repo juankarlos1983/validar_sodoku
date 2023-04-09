@@ -9,9 +9,22 @@ La idea principal que debemos seguir para solucionar un sodoku es que; no se deb
 
 A continuacion la explicacion del codigo que valida dicha idea.
 
-Primero vamos hacer una función que toma una lista de longitud 9 (block), y filtra los numeros mayores a cero, el cero no lo deja pasar, dejando una lista en donde es necesario saber si tiene numeros duplicados (funcion set()). 
+Primero declaramos una variable, este es el tablero completo o Sodoku
 
-{% filename %}command-line{% endfilename %}
+sodoku = [[5,3,0,0,7,0,0,0,0],
+          [6,0,0,1,9,5,0,0,0],
+          [0,9,8,0,0,0,0,6,0],
+          [8,0,0,0,6,0,0,0,3],
+          [4,0,0,8,0,3,0,0,1],
+          [7,0,0,0,2,0,0,0,6],
+          [0,6,0,0,0,0,2,8,0],
+          [0,0,0,4,1,9,0,0,5],
+          [0,0,0,0,8,0,0,7,9]]
+
+![image](https://user-images.githubusercontent.com/45399791/230801751-4a7cb154-2f5e-48dd-a0d4-44b7a8f528e0.png)
+"partial_assignment"
+
+Ahora vamos hacer una función que toma una lista de longitud 9 (block), y filtra los numeros mayores a cero, el cero no lo deja pasar, dejando una lista en donde es necesario saber si tiene numeros duplicados (funcion set()). 
 
     def has_duplicate(block) :
         block = list(filter(lambda x: x != 0, block))
@@ -21,6 +34,12 @@ Esta funcion es la que nos permitira saber si existen duplicados, tanto en filas
 
 ## Validar filas y columnas
 
-Ahora se muestra una funcion que toma primero una fila del Sodoku y valida si esta tiene repetidos lo misma se hace con las columnas, se la funcion de arriba devuelve verdadero, entonces existen duplicados.
+Ahora se muestra una funcion que toma primero una fila del Sodoku y valida si esta tiene numeros repetidos lo misma se hace con las columnas, se la funcion de arriba devuelve verdadero, entonces existen duplicados.
 
 
+n = len(partial_assignment)
+    # Check row and column constraints.
+    if any( has_duplicate([partial_assignment[i][j] for j in range(n)])
+            or has_duplicate([partial_assignment[j][i] for j in range(n)])
+            for i in range(n)):
+        return False
