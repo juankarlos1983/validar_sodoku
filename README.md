@@ -9,8 +9,12 @@ La idea principal que debemos seguir para solucionar un sodoku es que; no se deb
 
 A continuacion la explicacion del codigo que valida dicha idea.
 
-Primero vamos hacer una función que toma una lista de longitud 9, y filtra los numeros mayores a cero, el cero no lo deja pasar, dejando una lista en donde es necesario saber si tiene numeros duplicados. 
+Primero vamos hacer una función que toma una lista de longitud 9 (block), y filtra los numeros mayores a cero, el cero no lo deja pasar, dejando una lista en donde es necesario saber si tiene numeros duplicados (funcion set()). 
 
     def has_duplicate(block) :
         block = list(filter(lambda x: x != 0, block))
         return len(block) != len(set(block))
+
+Esta funcion es la que nos permitira saber si existen duplicados, tanto en filas como en columnas, ademas si existen duplicados en cada una de las divisiones.
+
+##Validar cfilas y columnas
