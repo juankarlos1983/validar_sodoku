@@ -17,4 +17,4 @@ Primero vamos hacer una función que toma una lista de longitud 9 (block), y fil
 
 Esta funcion es la que nos permitira saber si existen duplicados, tanto en filas como en columnas, ademas si existen duplicados en cada una de las divisiones.
 
-##Validar cfilas y columnas
+## Validar cfilas y columnas
