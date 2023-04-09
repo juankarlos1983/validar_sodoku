@@ -7,6 +7,10 @@ Un sodoku tiene 81 casillas, estas casillas se agrupan en 9 casillas, formando a
 
 La idea principal que debemos seguir para solucionar un sodoku es que; no se deben repetir numeros en sus filas y en sus columnas, ademas las divisiones deben tener los numeros de 1 al 9 sin repetir.
 
-Se mostrara a continuacion la explicacion del codigo que valida dicha idea.
+A continuacion la explicacion del codigo que valida dicha idea.
 
+Primero vamos hacer una función que toma una lista de longitud 9, y filtra los numeros mayores a cero, el cero no lo deja pasar, dejando una lista en donde es necesario saber si tiene numeros duplicados. 
 
+    def has_duplicate(block) :
+        block = list(filter(lambda x: x != 0, block))
+        return len(block) != len(set(block))
