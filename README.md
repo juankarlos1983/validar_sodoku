@@ -34,12 +34,26 @@ Esta funcion es la que nos permitira saber si existen duplicados, tanto en filas
 
 ## Validar filas y columnas
 
-Ahora se muestra una funcion que toma primero una fila del Sodoku y valida si esta tiene numeros repetidos lo misma se hace con las columnas, se la funcion de arriba devuelve verdadero, entonces existen duplicados.
+Se muestra una funcion que toma primero una fila del Sodoku y valida si esta tiene numeros repetidos lo misma se hace con las columnas, se la funcion de arriba devuelve verdadero, entonces existen duplicados.
 
 
 n = len(partial_assignment)
-    # Check row and column constraints.
-    if any( has_duplicate([partial_assignment[i][j] for j in range(n)])
-            or has_duplicate([partial_assignment[j][i] for j in range(n)])
+    if any( has_duplicate([partial_assignment[i][j] for j in range(n)]) --> Para validar las filas
+            or has_duplicate([partial_assignment[j][i] for j in range(n)]) --> Para validar las columnas
             for i in range(n)):
         return False
+Si en alguna fila o columna se devuelve True, entra a la condicion y retorna falso, indicando que el tablero no es valido.
+
+## Validar cada una de las 9 divisiones del tablero
+
+Tenemos el codigo 
+
+    region_size = int(math.sqrt(n))
+    return all(not has_duplicate([partial_assignment[a][b] 
+                for a in range(region_size * I, region_size * (I + 1))
+                for b in range(region_size * J, region_size * (J + 1))])          
+                
+                for I in range(region_size) for J in range(region_size))
+![image](https://user-images.githubusercontent.com/45399791/230812549-9cca6a24-1da1-4c22-8c05-a4eb906a06db.png)
+La imagen muestra la funcion de a y b, a recorre todas las filas y b las columnas.
+por ultimo tenemos a I y J estas recorren el cuadro de tres en tres, para evaluar cada division.
