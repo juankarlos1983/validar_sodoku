@@ -63,10 +63,10 @@ por ultimo tenemos a I y J estas recorren el cuadro de tres en tres, para evalua
 Este problema solo usa numeros, comenzamos con un primer numero, puede ser el 1
 la idea es mirar el numero y lego decir cuantos ve.
 
-Por ejemplo comenzamos viewndo el 1, entonces se dice, veo UN UNO: 11 --> esta seria la segunda cadena
+Por ejemplo comenzamos viendo el 1, entonces se dice, veo UN UNO: 11 --> esta seria la segunda cadena
 La tercer cadena seria veo DOS UNOS: 21, luego seria veo UN DOS y UN UNO: 1211, y asi secesivamente. 
 
-la idea es resorvel esta secuencia con codigo python.
+la idea es resolver esta secuencia con codigo python.
 Debemos ver primero que al seguir esta secuencia lo que se hace es agrupar los numeros y decir el nombre del numero; por ejemplo 11 DOS UNOs.
 
 Para esto usaremos la funcion GROUPBY del modulo ITERTOOLS, quedaria de la siguiente forma.
@@ -77,5 +77,5 @@ for _ in range(8):
     s = "". join(str(len(list(group))) + key for key, group in itertools.groupby(s))
 
 las variables key y group hacen lo siguiente, la variable key muestra el string.
-Lavariable group muestra el strin s en forma de lista ['1']
-La secuencia seria la siguiente: primero la variable s = '1' se muestra por medio de las demas variables asi; k = 1 group = ['1'] de manera que al sumar las variables "str(len(list(group))) + key" 11, al volver entraria asi k = 1 group = ['1','1'] y al volver a sumar 21.
+La variable group muestra el strin s en forma de lista ['1']
+La secuencia seria la siguiente: primero la variable s = '1' se muestra por medio de las demas variables asi; k = 1 group = ['1'] de manera que al sumar las variables "str(len(list(group))) + key", 11, al volver entraria asi k = 1 group = ['1','1'] y al volver a sumar 21.
